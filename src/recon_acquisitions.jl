@@ -7,18 +7,6 @@ using PartialFunctions
 using LinearAlgebra
 using Setfield
 
-fft_scaling(xsize,dims=[1]) = sqrt(reduce((*),map(d->xsize[d],dims)))
-
-ortho_fft(x,dims=[1]) = fft(x,dims) ./ Float32(fft_scaling(size(x),dims))
-
-ortho_ifft(x,dims=[1]) = bfft(x,dims) ./ Float32(fft_scaling(size(x),dims))
-
-cfft(x, dims=[1]) = ifftshift(ortho_fft(fftshift(x,dims),dims),dims)
-
-
-cifft(x, dims=[1]) = fftshift(ortho_ifft(ifftshift(x,dims),dims),dims)
-
-
 function noise_adjustment(header::MRDHeader, noise_acq::Acquisition)
 
 
