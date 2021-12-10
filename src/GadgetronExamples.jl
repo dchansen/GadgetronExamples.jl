@@ -1,6 +1,10 @@
 module GadgetronExamples
 
-include("common.jl")
 include("recon_acquisitions.jl")
-include("recon_buffers.jl")
+
+import .ReconAcquisitions.reconstruct_acquisitions
+
+include("recon_buckets.jl")
+
+import .ReconBuckets.reconstruct_buckets
 end
